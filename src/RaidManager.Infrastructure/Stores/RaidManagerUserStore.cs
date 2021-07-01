@@ -65,6 +65,7 @@ namespace RaidManager.Infrastructure.Stores
 
         public Task<User> FindByNameAsync(string normalizedUserName, CancellationToken cancellationToken)
         {
+            var query = _queryProvider.GetQuery(_userQueriesConfiguration.FindByIdQuery);
             throw new System.NotImplementedException();
         }
 
