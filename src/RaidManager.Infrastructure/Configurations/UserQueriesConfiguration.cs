@@ -5,6 +5,6 @@ namespace RaidManager.Infrastructure.Configurations
     /// </summary>
     public class UserQueriesConfiguration : EntityQueriesConfigurationBase
     {
-
+        public string GetUserNameAsync {get;set;}
     }
 }
