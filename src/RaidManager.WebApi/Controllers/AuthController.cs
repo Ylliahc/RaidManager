@@ -8,8 +8,12 @@ namespace RaidManager.WebApi.Controllers
     [Route("[controller]")]
     public class AuthController
     {
+        public AuthController()
+        {
+            
+        }
         /// <summary>
-        /// 
+        /// Login method
         /// </summary>
         /// <param name="loginRequest"></param>
         /// <returns></returns>

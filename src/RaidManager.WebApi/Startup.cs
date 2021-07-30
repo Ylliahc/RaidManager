@@ -11,6 +11,9 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using RaidManager.Domain.Dto;
+using RaidManager.Infrastructure.Extensions;
+using RaidManager.Infrastructure.Stores;
 
 namespace RaidManager.WebApi
 {
@@ -28,6 +31,13 @@ namespace RaidManager.WebApi
         {
 
             services.AddControllers();
+
+            services.AddInfrastructure();
+
+            services.AddIdentity<User, UserRole>()
+                .AddUserStore<RaidManagerUserStore>()
+                .AddRoleStore<RaidManagerUserRoleStore>();
+
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "RaidManager.WebApi", Version = "v1" });

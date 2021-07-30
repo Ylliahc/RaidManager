@@ -12,6 +12,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\RaidManager.Domain\RaidManager.Domain.csproj" />
+    <ProjectReference Include="..\RaidManager.Infrastructure\RaidManager.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>

@@ -34,13 +34,14 @@ namespace RaidManager.Infrastructure.Stores
         public async Task<IdentityResult> CreateAsync(User user, CancellationToken cancellationToken)
         {
             var query = _queryProvider.GetQuery(_userQueriesConfiguration.InsertQuery);
-            
+            int affectedRow = 0;
+
             using(var connection = new SqlConnection(_databaseConfiguration.ConnectionString))
             {
-                await connection.QueryAsync<User>(query, user);
+                affectedRow = await connection.ExecuteAsync(query, user);
             }
 
-            return IdentityResult.Success;
+            return affectedRow > 0 ? IdentityResult.Success : IdentityResult.Failed(new IdentityError() {Description = $"Could not create user {user.Name}"});
         }
 
         public Task<IdentityResult> DeleteAsync(User user, CancellationToken cancellationToken) 
@@ -68,7 +69,22 @@ namespace RaidManager.Infrastructure.Stores
             throw new System.NotImplementedException();
         }
 
+        public Task<string> GetNormalizedRoleNameAsync(User role, CancellationToken cancellationToken)
+        {
+            throw new System.NotImplementedException();
+        }
+
         public Task<string> GetNormalizedUserNameAsync(User user, CancellationToken cancellationToken)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public Task<string> GetRoleIdAsync(User role, CancellationToken cancellationToken)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public Task<string> GetRoleNameAsync(User role, CancellationToken cancellationToken)
         {
             throw new System.NotImplementedException();
         }
@@ -83,7 +99,17 @@ namespace RaidManager.Infrastructure.Stores
             throw new System.NotImplementedException();
         }
 
+        public Task SetNormalizedRoleNameAsync(User role, string normalizedName, CancellationToken cancellationToken)
+        {
+            throw new System.NotImplementedException();
+        }
+
         public Task SetNormalizedUserNameAsync(User user, string normalizedName, CancellationToken cancellationToken)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public Task SetRoleNameAsync(User role, string roleName, CancellationToken cancellationToken)
         {
             throw new System.NotImplementedException();
         }
